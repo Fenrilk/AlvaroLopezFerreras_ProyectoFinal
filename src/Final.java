@@ -25,6 +25,8 @@ public class Final {
 		
 		frmJuego = new JFrame();
 		frmJuego.setTitle("Juego");
+		
+		// un try/catch que comprueba si la direccion de imagen icono esta bien y si no te indica el program de que hay un error de icono
 		Toolkit miPantalla=Toolkit.getDefaultToolkit();
         try {
 			imagen=ImageIO.read(new File("src/iconjuego.png"));
@@ -38,10 +40,11 @@ public class Final {
 		frmJuego.setBounds(100, 100, 881, 544);
 		frmJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJuego.getContentPane().setLayout(null);
+		frmJuego.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 865, 505);
+		panel.setBounds(0, 0, 875, 515);
 		frmJuego.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -72,5 +75,14 @@ public class Final {
 		descripcion.setBackground(Color.BLACK);
 		descripcion.setBounds(10, 252, 845, 95);
 		panel.add(descripcion);
+		
+		JButton btnSalir = new JButton("salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		btnSalir.setBounds(371, 458, 89, 23);
+		panel.add(btnSalir);
 	}
 }

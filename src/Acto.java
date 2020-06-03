@@ -27,9 +27,16 @@ public class Acto{
 	public static JLabel libro;
 	private Image imagen;
 
-
+/**
+ * venta donde se produce la escena del prota que se encuentra con un slime 
+ * En esta ventana se muesta el nombre y las estadistiscas del prota y aparte se muestra un texto narrando la historia
+ * Segun que arma haya seleccionado el prota saldrá una frase personalizada en el texto de la historia
+ * Te da a elgir entres tres opciones en esta ventana donde el prota puede morir o matar al slime, hacerse amigo del slime o pasar a la siguiente escena
+ */
 	public Acto() {
+		//ejecucion de la ventana
 		frmJuego = new JFrame();
+		// un try/catch que comprueba si la direccion de imagen icono esta bien y si no te indica el program de que hay un error de icono
         Toolkit miPantalla=Toolkit.getDefaultToolkit();
         try {
 			imagen=ImageIO.read(new File("src/iconjuego.png"));
@@ -44,10 +51,11 @@ public class Acto{
 		frmJuego.setBounds(100, 100, 881, 544);
 		frmJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJuego.getContentPane().setLayout(null);
+		frmJuego.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 865, 90);
+		panel.setBounds(0, 0, 875, 97);
 		frmJuego.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -99,7 +107,7 @@ public class Acto{
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 379, 865, 126);
+		panel_1.setBounds(0, 379, 875, 136);
 		frmJuego.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -163,7 +171,7 @@ public class Acto{
 		
 		
 		JLabel tierra = new JLabel();
-		tierra.setBounds(0, 133, 865, 263);
+		tierra.setBounds(0, 133, 875, 263);
 		ImageIcon suelo=new ImageIcon(getClass().getResource("suelo.png"));
 		ImageIcon sueloAj=new ImageIcon(suelo.getImage().getScaledInstance(tierra.getWidth(), tierra.getHeight(), Image.SCALE_SMOOTH));
 		frmJuego.getContentPane().add(tierra);

@@ -27,6 +27,8 @@ public class Acto1 {
 	
 	public Acto1() {
 		frmJuego = new JFrame();
+		
+		// un try/catch que comprueba si la direccion de imagen icono esta bien y si no te indica el program de que hay un error de icono
 		Toolkit miPantalla=Toolkit.getDefaultToolkit();
         try {
 			imagen=ImageIO.read(new File("src/iconjuego.png"));
@@ -41,10 +43,11 @@ public class Acto1 {
 		frmJuego.setBounds(100, 100, 881, 544);
 		frmJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJuego.getContentPane().setLayout(null);
+		frmJuego.setResizable(false);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 865, 90);
+		panel.setBounds(0, 0, 875, 90);
 		frmJuego.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -61,14 +64,18 @@ public class Acto1 {
 		luchar.setBackground(Color.GRAY);
 		panel.add(luchar);
 		
+		Comienzo datos=new Comienzo();
 		datos_pro = new JLabel("");
-		datos_pro.setBackground(Color.WHITE);
+		datos_pro.setForeground(Color.WHITE);
+		datos_pro.setFont(new Font("Algerian", Font.BOLD, 13));
+		datos_pro.setText(datos.getDatos());
+		datos_pro.setBackground(Color.BLACK);
 		datos_pro.setBounds(0, 0, 429, 90);
 		panel.add(datos_pro);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 379, 865, 126);
+		panel_1.setBounds(0, 379, 875, 136);
 		frmJuego.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -127,7 +134,7 @@ public class Acto1 {
 		sueloBoss.setIcon(sueloAj);
 
 		JLabel fondo_boss = new JLabel("");
-		fondo_boss.setBounds(0, 85, 865, 297);
+		fondo_boss.setBounds(0, 85, 875, 297);
 		ImageIcon fondo=new ImageIcon(getClass().getResource("fondoBoss.png"));
 		ImageIcon fondoAj=new ImageIcon(fondo.getImage().getScaledInstance(fondo_boss.getWidth(), fondo_boss.getHeight(), Image.SCALE_SMOOTH));
 		frmJuego.getContentPane().add(fondo_boss);
