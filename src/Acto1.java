@@ -25,6 +25,10 @@ public class Acto1 {
 	public static JLabel slime;
 	private Image imagen;
 	
+	/**
+	 * Ventana en la que solamente se hara la pelea contra el boss que dependiendo de lo que hayas 
+	 * seleccionado tendra un final distinto
+	 */
 	public Acto1() {
 		frmJuego = new JFrame();
 		
@@ -51,6 +55,7 @@ public class Acto1 {
 		frmJuego.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		//Boton pelear que ejecuta el evento final
 		JButton luchar = new JButton("Pelear");
 		luchar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -58,12 +63,14 @@ public class Acto1 {
 				frmJuego.setVisible(false);
 			}
 		});
+		//generar boton
 		luchar.setForeground(Color.WHITE);
 		luchar.setFont(new Font("Arial Black", Font.PLAIN, 18));
 		luchar.setBounds(721, 11, 134, 68);
 		luchar.setBackground(Color.GRAY);
 		panel.add(luchar);
 		
+		//Cuadro de texto donde aparace los datos del prota
 		Comienzo datos=new Comienzo();
 		datos_pro = new JLabel("");
 		datos_pro.setForeground(Color.WHITE);
@@ -79,24 +86,26 @@ public class Acto1 {
 		frmJuego.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
+		//Cuadro de texto donde se genera la frase de lo que paso en el evneto anterior
 		txt_evento = new JLabel("");
 		txt_evento.setForeground(Color.WHITE);
 		txt_evento.setBounds(10, 11, 845, 42);
 		panel_1.add(txt_evento);
 		
+		//Cuadro de texto
 		JLabel txt_luchafinal = new JLabel("Ahora es la batalla final, si derrota al fantasma puede ser que te recuerden como un h\u00E9roe, ve a por tu preciada victoria");
 		txt_luchafinal.setForeground(Color.WHITE);
 		txt_luchafinal.setBounds(10, 41, 845, 42);
 		panel_1.add(txt_luchafinal);
 		ImageIcon protag=new ImageIcon(getClass().getResource("prota.png"));
-		
+		//Imagen de espada
 		espada = new JLabel("");
 		espada.setBounds(37, 284, 28, 37);
 		ImageIcon sword=new ImageIcon(getClass().getResource("espada.png"));
 		ImageIcon swordAj=new ImageIcon(sword.getImage().getScaledInstance(espada.getWidth(), espada.getHeight(), Image.SCALE_SMOOTH));
 		frmJuego.getContentPane().add(espada);
 		espada.setIcon(swordAj);
-		
+		//Imagen de libro
 		libro = new JLabel("");
 		libro.setBounds(31, 297, 28, 26);
 		ImageIcon book=new ImageIcon(getClass().getResource("libromago.png"));
@@ -104,13 +113,13 @@ public class Acto1 {
 		frmJuego.getContentPane().add(libro);
 		libro.setIcon(bookAj);
 		
-		
+		//Imagen de slime
 	    slime = new JLabel("");
 		slime.setBounds(51, 297, 47, 37);
 		ImageIcon sli=new ImageIcon(getClass().getResource("slime.png"));
 		ImageIcon slimeAj=new ImageIcon(sli.getImage().getScaledInstance(slime.getWidth(), slime.getHeight(), Image.SCALE_SMOOTH));
 		
-		
+		//Imagen de prota
 		JLabel prota = new JLabel("");
 		prota.setBounds(31, 284, 47, 37);
 		ImageIcon protagAj=new ImageIcon(protag.getImage().getScaledInstance(prota.getWidth(), prota.getHeight(), Image.SCALE_SMOOTH));
@@ -119,6 +128,7 @@ public class Acto1 {
 		frmJuego.getContentPane().add(slime);
 		slime.setIcon(slimeAj);
 
+		//Imagen del boss
 		JLabel boss = new JLabel("");
 		boss.setBounds(557, 144, 244, 350);
 		ImageIcon jefe=new ImageIcon(getClass().getResource("boss.png"));
@@ -126,6 +136,7 @@ public class Acto1 {
 		frmJuego.getContentPane().add(boss);
 		boss.setIcon(jefeAj);
 		
+		//Imgen del suelo
 		JLabel sueloBoss = new JLabel();
 		sueloBoss.setBounds(0, 310, 547, 72);
 		ImageIcon suelo=new ImageIcon(getClass().getResource("sueloBoss.png"));
@@ -133,6 +144,7 @@ public class Acto1 {
 		frmJuego.getContentPane().add(sueloBoss);
 		sueloBoss.setIcon(sueloAj);
 
+		//Imagen del fondo
 		JLabel fondo_boss = new JLabel("");
 		fondo_boss.setBounds(0, 85, 875, 297);
 		ImageIcon fondo=new ImageIcon(getClass().getResource("fondoBoss.png"));
@@ -143,11 +155,18 @@ public class Acto1 {
 
 	}
 	
+	/**
+	 * evento final donde se generará la ventana final y dependiendo de las elecciones 
+	 * tendras distinto tipo de lucha
+	 */
 	private void evento_final() {
 		Final fin = new Final();
 		Comienzo personaje =  new Comienzo();
 		Slimo slime = new Slimo(12,0);
 		Boss jefe = new Boss(13,13);
+		//Si en el evento anterior si se ha hecho amigo del slime entonces se generará las
+		//frases personalizadas en la ventana final 
+		//Pero si no eres amgo entonces se generará frases distintas personalizadas
 		if(slime.getEs_amigo()) {
 			fin.descripcion.setText(
 					jefe.morir(personaje.getResultado_final2(), slime.getEs_amigo()));

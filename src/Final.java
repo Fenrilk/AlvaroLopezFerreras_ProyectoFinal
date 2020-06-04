@@ -21,6 +21,10 @@ public class Final {
 	public static JLabel descripcion;
 	private Image imagen;
 	
+	/**
+	 * Ventana final donde te dice tu motivo de haber perdido o ganado y dos botones que son 
+	 * el de volver a jugar o de salir del juego.
+	 */
 	public Final() {
 		
 		frmJuego = new JFrame();
@@ -37,7 +41,8 @@ public class Final {
 			System.out.println("Error al cargar icono");
 		}
 		//frmJuego.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\cenec\\eclipse-workspace\\prueba2\\src\\vista\\iconjuego.png"));
-		frmJuego.setBounds(100, 100, 881, 544);
+		//generar ventana
+        frmJuego.setBounds(100, 100, 881, 544);
 		frmJuego.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmJuego.getContentPane().setLayout(null);
 		frmJuego.setResizable(false);
@@ -47,14 +52,14 @@ public class Final {
 		panel.setBounds(0, 0, 875, 515);
 		frmJuego.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+		//Cuadro de texto
 		JLabel fin = new JLabel("Tu final");
 		fin.setFont(new Font("Kristen ITC", Font.BOLD, 74));
 		fin.setHorizontalAlignment(SwingConstants.CENTER);
 		fin.setForeground(Color.RED);
 		fin.setBounds(214, 57, 419, 80);
 		panel.add(fin);
-		
+		//Boton de volver a jugar que ejecuta de nuevo el juego
 		JButton reinicio = new JButton("Volver a jugar");
 		reinicio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -68,6 +73,7 @@ public class Final {
 		reinicio.setBounds(343, 358, 157, 23);
 		panel.add(reinicio);
 		
+		//Cuadro de texto donde se genera la frase personalizada de tu final
 		descripcion = new JLabel("");
 		descripcion.setFont(new Font("Segoe UI", Font.BOLD, 14));
 		descripcion.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,6 +82,7 @@ public class Final {
 		descripcion.setBounds(10, 252, 845, 95);
 		panel.add(descripcion);
 		
+		//Boton de salir del juego
 		JButton btnSalir = new JButton("salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
